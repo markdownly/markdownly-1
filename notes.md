@@ -7,7 +7,27 @@ Redux gives us a global object where all state lives. This object is called our 
 
 actions -> change state -> get state
 
+Redux methods
+```
+store.getState()
+store.dispatch()
+store.subscribe()
+```
 
+In REACT - updating view subscribe and unsubscribe:
+```
+componentDidMount() {
+  this.updateState();
+  const unsubscribe = store.subscribe(() => {
+    this.updateState();
+  })
+  this.setState({ unsubscribe });
+}
+
+componentWillUnmount() {
+  this.state.unsubscribe();
+}
+```
 
 ```
 Import { createStore } from ‘redux’;
