@@ -4,13 +4,12 @@ import Editor from './Editor';
 import store from '../../store';
 import { getMarkdown } from '../../selectors/selectMarkdown'; 
 import { updateMarkdown } from '../../actions/actionUpdateMarkdown';
-import MarkdownFiles from './MarkdownFiles';
+import MarkdownNav from './MarkdownNav';
 import styles from './Document.css';
 
 export default class Document extends PureComponent {
   state = {
     markdown: '# Hi there',
-    markdownTitles: ['tab1', 'tab2'],
     unsubscribe: null
   };
 
@@ -37,11 +36,11 @@ export default class Document extends PureComponent {
   }
 
   render() {
-    const { markdown, markdownTitles } = this.state;
+    const { markdown } = this.state;
     return (
       <>
         <div className={styles.Document}>
-          <MarkdownFiles markdownTitles={markdownTitles}/>
+          <MarkdownNav />
           <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
           <Preview markdown={markdown} />
         </div>

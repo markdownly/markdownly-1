@@ -4,10 +4,10 @@ import MarkdownFiles from './MarkdownFiles';
 
 describe('MarkdownFiles', () => {
   it('matches a snapshot', () => {
-    const markdownTitles = ['file1', 'file2'];
+    const titles = ['file1', 'file2'];
 
     const tree = renderer.create(
-      <MarkdownFiles markdownTitles={markdownTitles} />
+      <MarkdownFiles titles={titles} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();
