@@ -10,7 +10,7 @@ import styles from './Document.css';
 export default class Document extends PureComponent {
   state = {
     markdown: '# Hi there',
-    markdownTitle: 'Title',
+    markdownTitles: ['tab1', 'tab2'],
     unsubscribe: null
   };
 
@@ -37,11 +37,11 @@ export default class Document extends PureComponent {
   }
 
   render() {
-    const { markdown, markdownTitle } = this.state;
+    const { markdown, markdownTitles } = this.state;
     return (
       <>
         <div className={styles.Document}>
-          <MarkdownFile markdownTitle={markdownTitle}/>
+          <MarkdownFile markdownTitles={markdownTitles}/>
           <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
