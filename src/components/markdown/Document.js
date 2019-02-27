@@ -4,20 +4,34 @@ import Editor from './Editor';
 import styles from './Document.css';
 import store from '../../store';
 import { getMarkdown } from '../../selectors/selectMarkdown'; 
+import { updateMarkdown } from '../../actions/actionUpdateMarkdown';
 
 export default class Document extends PureComponent {
   state = {
-    markdown: '# Hi there'
+    markdown: '# Hi there',
+    unsubscribe: null
+  };
+
+  updateState = () => {
+    const currentMarkdown = store.getState();
+    const markdown = getMarkdown(currentMarkdown);
+    this.setState({ markdown });
   };
 
   updateMarkdown = ({ target }) => {
-    this.setState({ markdown: target.value });
+    store.dispatch(updateMarkdown(target.value));
   };
-  componentDidMount(){
-    const currentMarkdown = store.getState();
-    console.log('Thanks vs code', currentMarkdown);
-    const markdown = getMarkdown(currentMarkdown);
-    this.setState({ markdown });
+
+  componentDidMount() { 
+    this.updateState();
+    const unsubscribe = store.subscribe(() => {
+      this.updateState();
+    });
+    this.setState({ unsubscribe });
+  }
+  
+  componentWillUnmount() {
+    this.state.unsubscribe();
   }
 
   render() {
