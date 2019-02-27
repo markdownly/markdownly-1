@@ -1,13 +1,13 @@
 import React from 'react';
 import renderer from 'react-test-renderer';
-import MarkdownFile from './MarkdownFile';
+import MarkdownFiles from './MarkdownFiles';
 
-describe('MarkdownFile', () => {
+describe('MarkdownFiles', () => {
   it('matches a snapshot', () => {
     const markdownTitles = ['file1', 'file2'];
 
     const tree = renderer.create(
-      <MarkdownFile markdownTitles={markdownTitles} />
+      <MarkdownFiles markdownTitles={markdownTitles} />
     ).toJSON();
 
     expect(tree).toMatchSnapshot();

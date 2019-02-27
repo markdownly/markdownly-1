@@ -1,8 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function MarkdownFile({ markdownTitles }) {
-  console.log('thiss', markdownTitles);
+export default function MarkdownFiles({ markdownTitles }) {
   const titleList = markdownTitles.map((title) => {
     return <li key={title}>{title}</li>;
   });
@@ -12,6 +11,6 @@ export default function MarkdownFile({ markdownTitles }) {
 
 }
 
-MarkdownFile.propTypes = {
+MarkdownFiles.propTypes = {
   markdownTitles: PropTypes.array.isRequired
 };

@@ -4,7 +4,7 @@ import Editor from './Editor';
 import store from '../../store';
 import { getMarkdown } from '../../selectors/selectMarkdown'; 
 import { updateMarkdown } from '../../actions/actionUpdateMarkdown';
-import MarkdownFile from './MarkdownFile';
+import MarkdownFiles from './MarkdownFiles';
 import styles from './Document.css';
 
 export default class Document extends PureComponent {
@@ -41,7 +41,7 @@ export default class Document extends PureComponent {
     return (
       <>
         <div className={styles.Document}>
-          <MarkdownFile markdownTitles={markdownTitles}/>
+          <MarkdownFiles markdownTitles={markdownTitles}/>
           <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
