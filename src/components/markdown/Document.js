@@ -2,6 +2,8 @@ import React, { PureComponent } from 'react';
 import Preview from './Preview';
 import Editor from './Editor';
 import styles from './Document.css';
+import store from '../../store';
+import { getMarkdown } from '../../selectors/selectMarkdown'; 
 
 export default class Document extends PureComponent {
   state = {
@@ -11,6 +13,12 @@ export default class Document extends PureComponent {
   updateMarkdown = ({ target }) => {
     this.setState({ markdown: target.value });
   };
+  componentDidMount(){
+    const currentMarkdown = store.getState();
+    console.log('Thanks vs code', currentMarkdown);
+    const markdown = getMarkdown(currentMarkdown);
+    this.setState({ markdown });
+  }
 
   render() {
     const { markdown } = this.state;
