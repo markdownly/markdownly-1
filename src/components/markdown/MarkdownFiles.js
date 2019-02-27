@@ -8,7 +8,6 @@ export default function MarkdownFiles({ markdownTitles }) {
   return (
     <ul>{titleList}</ul>
   );
-
 }
 
 MarkdownFiles.propTypes = {
