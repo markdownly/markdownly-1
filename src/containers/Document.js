@@ -1,9 +1,9 @@
 import React, { PureComponent } from 'react';
-import Preview from './Preview';
-import Editor from './Editor';
-import store from '../../store';
-import { getMarkdown } from '../../selectors/selectMarkdown'; 
-import { updateMarkdown } from '../../actions/actionUpdateMarkdown';
+import Preview from '../components/markdown/Preview';
+import Editor from '../components/markdown/Editor';
+import store from '../store';
+import { getMarkdown } from '../selectors/selectMarkdown'; 
+import { updateMarkdown } from '../actions/actionUpdateMarkdown';
 import MarkdownNav from './MarkdownNav';
 import styles from './Document.css';
 
