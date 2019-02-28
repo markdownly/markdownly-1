@@ -1,49 +1,25 @@
-import React, { PureComponent } from 'react';
-import store from '../store';
-import { getList } from '../selectors/selectTitles';
 import SaveForm from '../components/markdown/SaveForm';
+import { connect } from 'react-redux';
+import { getActiveTitle } from '../selectors/selectTitles';
+import { updateTitle, saveMarkdown } from '../actions/actionMarkdownList';
+import { getMarkdown } from '../selectors/selectMarkdown';
 
-export default class SaveMarkdown extends PureComponent {
-  state = {
-    markdowns: [],
-    title: 'hello',
-    markdown: 'some text'
-  };
+const mapStateToProps = (state) => (console.log(state.markdownList.markdowns[0].title), {
+  markdown: getMarkdown(state),
+  title: getActiveTitle(state)
+});
 
-  // updateState = () => {
-  //   const markdowns = getList(store.getState());
-  //   this.setState({ markdowns });
-  // };
-
-  // componentDidMount() {
-  //   this.updateState();
-  //   const unsubscribe = store.subscribe(() => {
-  //     this.updateState();
-  //   });
-  //   this.getState({ unsubscribe });
-  // }
-
-  // componentWillUnmount() {
-  //   this.state.unsubscribe();
-  // }
-
-  handleSubmit = (event) => {
+const mapDispatchToProps = (dispatch) => ({
+  onChange({ target }) {
+    dispatch(updateTitle(target.value));
+  },
+  onSubmit(title, markdown, event) {
     event.preventDefault();
-  };
-
-  handleChange = ({ target }) => {
-    this.setState({ [target.name]: target.value });
-  };
-
-  render() {
-    const { title } = this.state;
-    return (
-      <SaveForm 
-        onChange={this.handleChange}
-        onSubmit={this.handleSubmit}
-        title={title}
-        // markdown={markdown}
-      />
-    );
+    dispatch(saveMarkdown(title, markdown));
   }
-}
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(SaveForm);

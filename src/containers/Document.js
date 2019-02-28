@@ -1,50 +1,43 @@
-import React, { PureComponent } from 'react';
+import React from 'react';
 import Preview from '../components/markdown/Preview';
 import Editor from '../components/markdown/Editor';
-import store from '../store';
+import PropTypes from 'prop-types';
+import { connect } from 'react-redux';
 import { getMarkdown } from '../selectors/selectMarkdown'; 
 import { updateMarkdown } from '../actions/actionUpdateMarkdown';
-import MarkdownNav from './MarkdownNav';
+// import MarkdownNav from './MarkdownNav';
 import styles from './Document.css';
 
-export default class Document extends PureComponent {
-  state = {
-    markdown: '# Hi there',
-    unsubscribe: null
-  };
+const mapStateToProps = (state) => ({
+  markdown: getMarkdown(state)
+});
 
-  updateState = () => {
-    const entireState = store.getState();
-    const markdown = getMarkdown(entireState);
-    this.setState({ markdown });
-  };
-
-  updateMarkdown = ({ target }) => {
-    store.dispatch(updateMarkdown(target.value));
-  };
-
-  componentDidMount() { 
-    this.updateState();
-    const unsubscribe = store.subscribe(() => {
-      this.updateState();
-    });
-    this.setState({ unsubscribe });
+const mapDispatchToProps = (dispatch) => ({
+  updateMarkdown({ target }) {
+    dispatch(updateMarkdown(target.value));
   }
-  
-  componentWillUnmount() {
-    this.state.unsubscribe();
-  }
+});
 
-  render() {
-    const { markdown } = this.state;
-    return (
+function Document({ markdown, updateMarkdown }) {
+  return (
       <>
         <div className={styles.Document}>
-          <MarkdownNav />
-          <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
+          {/* <MarkdownNav /> */}
+          <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
       </>
-    );
-  }
+  );
 }
+
+Document.propTypes = {
+  markdown: PropTypes.string.isRequired,
+  updateMarkdown: PropTypes.func.isRequired
+};
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Document);
+
+
