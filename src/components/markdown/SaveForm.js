@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
-export default function SaveForm({ title, onSubmit }) {
+export default function SaveForm({ title, onSubmit, onChange }) {
   return (
     <form onSubmit={onSubmit}>
-      <input type='text' name='title' value={title} ></input> 
+      <input onChange={onChange} type='text' name='title' value={title} ></input> 
       <button>ADD TITLE</button>
     </form> 
   );
@@ -12,5 +12,7 @@ export default function SaveForm({ title, onSubmit }) {
 
 SaveForm.propTypes = {
   title: PropTypes.string.isRequired,
-  onSubmit: PropTypes.func.isRequired
+  // markdown: PropTypes.string.isRequired,
+  onSubmit: PropTypes.func.isRequired,
+  onChange: PropTypes.func.isRequired
 };

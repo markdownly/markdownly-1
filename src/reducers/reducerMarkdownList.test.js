@@ -5,7 +5,7 @@ describe('markdown list reducer', () => {
     const state = {
       markdowns: [{
         title: 'title',
-        text: 'text'
+        markdown: 'text'
       }]
     };
     const updatedState = reducer(state, {});
@@ -13,7 +13,7 @@ describe('markdown list reducer', () => {
     expect(updatedState).toEqual({
       markdowns: [{
         title: 'title',
-        text: 'text'
+        markdown: 'text'
       }]
     });
   });

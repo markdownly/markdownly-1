@@ -183,3 +183,63 @@ render() {
   )
 }
 ```
+Setting up react-redux
+npm i react-redux
+in - index.js
+```
+import {Provider} from 'react-redux'
+import store from 'store'
+
+render(
+  <Provider store={store}>
+    <App />
+  </Provider>
+)
+```
+Now you can delete all the container-style code where we're listening to everything and actually convert container to presentational-component that will take props instead of hold state. Essentially it combines 2 presentational components now.
+
+in component file use connect, partially applied curry function
+
+use instead of class container
+```
+export default AllDogsContainer = connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(Dogs) <--pass component
+```
+Pass selectors to get state and return as props
+non functional properties - use existing selectors
+function that takes state and returns to component as props
+Use instead of componentDidMount and Unmount
+```
+const mapStateToProps = state => ({
+  name: getDogCreateName(state),
+  age: getDogCreateAge(state),
+  weight: getDogCreateWeight(state),
+  dogs: getDogs(state)
+})
+```
+Pass anything that needs to trigger an action - how actions work defined 
+use instead of handleSubmit and handleChange
+```
+const mapDispatchToProps = dispatch => ({
+  // figure out what's changing and dispatch depending on target 
+
+  onChange({target}) {
+    const factoryMethod = {
+      name: updateName,
+      age: updateAge,
+      weight: updateWeight
+    }
+
+  dispatch(factoryMethod[target.name](target.value))
+  }
+
+  onSubmit(event) {
+    event.preventDefault();
+    const { name, age, weight } = props
+    dispatch(addDog());
+  }
+})
+```
+Displaying a list item only needs an index

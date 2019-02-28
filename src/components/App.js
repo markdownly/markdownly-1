@@ -1,12 +1,12 @@
 import React from 'react';
 import Document from '../containers/Document';
-import SaveForm from './markdown/SaveForm';
+import SaveMarkdown from '../containers/SaveMarkdown';
 
 export default function App() {
   return (
     <>
       <h1>Markdown Editor</h1>
-      <SaveForm />
+      <SaveMarkdown />
       <Document />
     </>
   );
