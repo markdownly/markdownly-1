@@ -1,4 +1,4 @@
 export const getMarkdown = state => {
-  return state.markdown;
+  return state.document.markdown;
 };
 
