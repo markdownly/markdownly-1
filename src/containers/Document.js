@@ -8,12 +8,10 @@ import { updateMarkdown } from '../actions/actionUpdateMarkdown';
 // import MarkdownNav from './MarkdownNav';
 import styles from './Document.css';
 
-
-//data type props
 const mapStateToProps = (state) => ({
   markdown: getMarkdown(state)
 });
-//function type props
+
 const mapDispatchToProps = (dispatch) => ({
   updateMarkdown({ target }) {
     dispatch(updateMarkdown(target.value));
@@ -30,8 +28,8 @@ function Document({ markdown, updateMarkdown }) {
         </div>
       </>
   );
-  
 }
+
 Document.propTypes = {
   markdown: PropTypes.string.isRequired,
   updateMarkdown: PropTypes.func.isRequired

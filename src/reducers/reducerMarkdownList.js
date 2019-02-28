@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 const initialState = {
   markdowns: [{
     title: 'title',
