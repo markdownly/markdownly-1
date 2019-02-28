@@ -40,7 +40,7 @@ export default class Document extends PureComponent {
     return (
       <>
         <div className={styles.Document}>
-          <MarkdownNav />
+          {/* <MarkdownNav /> */}
           <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
