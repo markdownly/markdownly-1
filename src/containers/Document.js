@@ -1,6 +1,7 @@
 import React from 'react';
 import Preview from '../components/markdown/Preview';
 import Editor from '../components/markdown/Editor';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import { getMarkdown } from '../selectors/selectMarkdown'; 
 import { updateMarkdown } from '../actions/actionUpdateMarkdown';
@@ -31,18 +32,14 @@ function Document({ markdown, updateMarkdown }) {
   );
   
 }
+Document.propTypes = {
+  markdown: PropTypes.string.isRequired,
+  updateMarkdown: PropTypes.func.isRequired
+};
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(Document);
 
-// const ConnectedEditor = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Editor);
 
-// const ConnectedEPreview = connect(
-//   mapStateToProps,
-//   mapDispatchToProps
-// )(Preview);
