@@ -1,0 +1,41 @@
+import React, { PureComponent } from 'react';
+import store from '../store';
+import { getList } from '../selectors/selectTitles';
+import SaveForm from '../components/markdown/SaveForm';
+
+export default class SaveMarkdown extends PureComponent {
+  state = {
+    markdowns: []
+  };
+
+  updateState = () => {
+    const markdowns = getList(store.getState());
+    this.setState({ markdowns });
+  };
+
+  componentDidMount() {
+    this.updateState();
+    const unsubscribe = store.subscribe(() => {
+      this.updateState();
+    });
+    this.getState({ unsubscribe });
+  }
+
+  componentWillUnmount() {
+    this.state.unsubscribe();
+  }
+
+  handleSubmit = (event) => {
+    event.preventDefault();
+  };
+
+  render() {
+    const { markdowns } = this.state;
+    return (
+      <SaveForm 
+        markdowns={markdowns}
+        onSubmit={this.handleSubmit}
+      />
+    );
+  }
+}

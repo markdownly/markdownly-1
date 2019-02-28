@@ -1,6 +1,6 @@
 import React, { PureComponent } from 'react';
 import store from '../store';
-import { getTitles } from '../selectors/selectMarkdownList';
+import { getTitles } from '../selectors/selectTitles';
 import MarkdownFiles from '../components/markdown/MarkdownFiles';
 
 export default class MarkdownNav extends PureComponent {
