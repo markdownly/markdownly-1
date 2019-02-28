@@ -1,7 +1,11 @@
-export const getList = state => {
+export const getMarkdowns = state => {
   return state.markdownList.markdowns;
 };
 
 export const getTitles = state => {
-  return getList(state).map(doc => doc.title);
+  return getMarkdowns(state).map(doc => doc.title);
+};
+
+export const getMarkdownTexts = state => {
+  return getMarkdowns(state).map(doc => doc.markdown);
 };
