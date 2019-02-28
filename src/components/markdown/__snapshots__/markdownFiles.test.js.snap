@@ -1,0 +1,12 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`MarkdownFiles matches a snapshot 1`] = `
+<ul>
+  <li>
+    file1
+  </li>
+  <li>
+    file2
+  </li>
+</ul>
+`;

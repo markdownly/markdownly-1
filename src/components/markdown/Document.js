@@ -1,10 +1,11 @@
 import React, { PureComponent } from 'react';
 import Preview from './Preview';
 import Editor from './Editor';
-import styles from './Document.css';
 import store from '../../store';
 import { getMarkdown } from '../../selectors/selectMarkdown'; 
 import { updateMarkdown } from '../../actions/actionUpdateMarkdown';
+import MarkdownNav from './MarkdownNav';
+import styles from './Document.css';
 
 export default class Document extends PureComponent {
   state = {
@@ -13,8 +14,8 @@ export default class Document extends PureComponent {
   };
 
   updateState = () => {
-    const currentMarkdown = store.getState();
-    const markdown = getMarkdown(currentMarkdown);
+    const entireState = store.getState();
+    const markdown = getMarkdown(entireState);
     this.setState({ markdown });
   };
 
@@ -39,6 +40,7 @@ export default class Document extends PureComponent {
     return (
       <>
         <div className={styles.Document}>
+          <MarkdownNav />
           <Editor markdown={markdown} updateMarkdown={this.updateMarkdown} />
           <Preview markdown={markdown} />
         </div>
