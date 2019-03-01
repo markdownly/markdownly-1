@@ -1,8 +1,8 @@
 import SaveForm from '../components/markdown/SaveForm';
 import { connect } from 'react-redux';
-import { getActiveTitle } from '../selectors/selectTitles';
-import { updateTitle, saveMarkdown } from '../actions/actionMarkdownList';
-import { getMarkdown } from '../selectors/selectMarkdown';
+import { getActiveTitle } from '../selectors/selectSaveMarkdown';
+import { updateTitle, saveMarkdown } from '../actions/actionSaveMarkdown';
+import { getMarkdown } from '../selectors/selectDocument';
 
 const mapStateToProps = (state) => ({
   markdown: getMarkdown(state),
