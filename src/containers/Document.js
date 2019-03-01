@@ -3,8 +3,8 @@ import Preview from '../components/markdown/Preview';
 import Editor from '../components/markdown/Editor';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMarkdown } from '../selectors/selectMarkdown'; 
-import { updateMarkdown } from '../actions/actionUpdateMarkdown';
+import { getMarkdown } from '../selectors/selectDocument'; 
+import { updateMarkdown } from '../actions/actionDocument';
 // import MarkdownNav from './MarkdownNav';
 import styles from './Document.css';
 

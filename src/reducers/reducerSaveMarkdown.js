@@ -1,4 +1,4 @@
-import { SAVE_MARKDOWN, UPDATE_TITLE } from '../actions/actionMarkdownList';
+import { SAVE_MARKDOWN, UPDATE_TITLE } from '../actions/actionSaveMarkdown';
 
 const initialState = {
   markdowns: [{

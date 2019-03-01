@@ -1,6 +1,6 @@
-import { getMarkdown } from './selectMarkdown';
+import { getMarkdown } from './selectDocument';
 
-describe('select markdown', () => {
+describe('selectMarkdown', () => {
   it('selects markdown from state', () => {
     const state = {
       document: {

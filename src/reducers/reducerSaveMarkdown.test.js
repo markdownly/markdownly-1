@@ -1,6 +1,6 @@
-import reducer from './reducerMarkdownList';
+import reducer from './reducerSaveMarkdown';
 
-describe('markdown list reducer', () => {
+describe('SaveMarkdown reducer', () => {
   it('shows a list of markdown', () => {
     const state = {
       markdowns: [{

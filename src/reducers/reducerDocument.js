@@ -1,4 +1,4 @@
-import { UPDATE_MARKDOWN } from '../actions/actionUpdateMarkdown';
+import { UPDATE_MARKDOWN } from '../actions/actionDocument';
 
 const initialState = { 
   markdown: '# Hi There'

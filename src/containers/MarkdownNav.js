@@ -1,7 +1,7 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'; 
-import { getTitles } from '../selectors/selectMarkdownList';
+import { getTitles } from '../selectors/selectMarkdownNav';
 import MarkdownFiles from '../components/markdown/MarkdownFiles';
 
 const mapStateToProps = (state) => ({

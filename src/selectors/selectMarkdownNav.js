@@ -9,7 +9,3 @@ export const getTitles = state => {
 export const getMarkdownTexts = state => {
   return getMarkdowns(state).map(doc => doc.markdown);
 };
-
-export const getActiveTitle = state => {
-  return state.markdownList.title;
-};

@@ -1,7 +1,7 @@
 import { 
   updateMarkdown, 
   UPDATE_MARKDOWN 
-} from './actionUpdateMarkdown';
+} from './actionDocument';
 
 describe('update markdown action', () => {
   it('updates a markdown action', () => {
