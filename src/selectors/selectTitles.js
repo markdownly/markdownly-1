@@ -11,5 +11,5 @@ export const getMarkdownTexts = state => {
 };
 
 export const getActiveTitle = state => {
-  return getTitles(state)[0];
+  return state.markdownList.title;
 };

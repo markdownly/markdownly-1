@@ -4,7 +4,7 @@ import { getActiveTitle } from '../selectors/selectTitles';
 import { updateTitle, saveMarkdown } from '../actions/actionMarkdownList';
 import { getMarkdown } from '../selectors/selectMarkdown';
 
-const mapStateToProps = (state) => (console.log(state.markdownList.markdowns[0].title), {
+const mapStateToProps = (state) => ({
   markdown: getMarkdown(state),
   title: getActiveTitle(state)
 });
@@ -13,6 +13,7 @@ const mapDispatchToProps = (dispatch) => ({
   onChange({ target }) {
     dispatch(updateTitle(target.value));
   },
+
   onSubmit(title, markdown, event) {
     event.preventDefault();
     dispatch(saveMarkdown(title, markdown));

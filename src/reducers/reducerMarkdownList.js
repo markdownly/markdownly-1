@@ -4,7 +4,8 @@ const initialState = {
   markdowns: [{
     title: 'title',
     markdown: 'text'
-  }]
+  }],
+  title: 'banana'
 };
 
 export default function reducer(state = initialState, action) {

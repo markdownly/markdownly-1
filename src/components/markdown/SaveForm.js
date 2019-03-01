@@ -4,8 +4,10 @@ import PropTypes from 'prop-types';
 export default function SaveForm({ title, markdown, onSubmit, onChange }) {
   return (
     <form onSubmit={onSubmit.bind(null, title, markdown)}>
-      <input onChange={onChange} type='text' name='title' value={title} ></input> 
-      <button>ADD TITLE</button>
+      <label> Name Your Markdown: 
+        <input onChange={onChange} type='text' name='title' value={title}></input> 
+      </label>
+      <button>Save My Markdown</button>
     </form> 
   );
 } 
