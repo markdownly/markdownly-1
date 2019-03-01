@@ -12,7 +12,10 @@ export default function reducer(state = initialState, action) {
     case SAVE_MARKDOWN:
       return {
         ...state,
-        markdowns: action.payload
+        markdowns: [
+          ...state.markdowns,
+          { ...action.payload }
+        ]
       };
     case UPDATE_TITLE:
       return {
