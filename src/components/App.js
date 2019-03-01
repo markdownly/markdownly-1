@@ -1,13 +1,18 @@
 import React from 'react';
 import Document from '../containers/Document';
-// import SaveMarkdown from '../containers/SaveMarkdown';
+import { BrowserRouter as Router, Switch, Redirect, Route } from 'react-router-dom';
 
 export default function App() {
   return (
     <>
       <h1>Markdown Editor</h1>
-      {/* <SaveMarkdown /> */}
-      <Document />
+      <Router>
+        <Switch>
+          <Route path="/" component={Document} />
+          <Route path="/markdown/:index" component={document} />
+          <Redirect to="/" />
+        </Switch>
+      </Router>
     </>
   );
 }

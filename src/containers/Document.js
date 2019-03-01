@@ -3,9 +3,10 @@ import Preview from '../components/markdown/Preview';
 import Editor from '../components/markdown/Editor';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
-import { getMarkdown } from '../selectors/selectDocument'; 
+import { getMarkdown } from '../selectors/selectDocument';
 import { updateMarkdown } from '../actions/actionDocument';
-// import MarkdownNav from './MarkdownNav';
+import MarkdownNav from './MarkdownNav';
+import SaveMarkdown from './SaveMarkdown';
 import styles from './Document.css';
 
 const mapStateToProps = (state) => ({
@@ -20,13 +21,14 @@ const mapDispatchToProps = (dispatch) => ({
 
 function Document({ markdown, updateMarkdown }) {
   return (
-      <>
-        <div className={styles.Document}>
-          {/* <MarkdownNav /> */}
-          <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
-          <Preview markdown={markdown} />
-        </div>
-      </>
+    <>
+      <SaveMarkdown />
+      <div className={styles.Document}>
+        <MarkdownNav />
+        <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
+        <Preview markdown={markdown} />
+      </div>
+    </>
   );
 }
 

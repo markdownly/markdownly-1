@@ -2,8 +2,8 @@ import React from 'react';
 import PropTypes from 'prop-types';
 
 export default function MarkdownFiles({ titles }) {
-  const titleList = titles.map((title) => {
-    return <li key={title}>{title}</li>;
+  const titleList = titles.map((title, i) => {
+    return <a key={i} href='#'><li>{title}</li></a>;
   });
   return (
     <ul>{titleList}</ul>
