@@ -1,11 +1,12 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux'; 
-import { getTitles } from '../selectors/selectMarkdownNav';
+import { getTitles, getActiveMarkdown } from '../selectors/selectMarkdownNav';
 import MarkdownFiles from '../components/markdown/MarkdownFiles';
 
-const mapStateToProps = (state) => ({
-  titles: getTitles(state)
+const mapStateToProps = (state, props) => ({
+  titles: getTitles(state),
+  activeMarkdown: getActiveMarkdown(state, props.index)  
 });
 
 function MarkdownNav({ titles }) {
@@ -15,11 +16,12 @@ function MarkdownNav({ titles }) {
 }
 
 MarkdownNav.propTypes = {
-  titles: PropTypes.array.isRequired
+  titles: PropTypes.array.isRequired,
+  activeMarkdown: PropTypes.object
 };
 
 export default connect(
   mapStateToProps
-)(MarkdownNav); 
+)(MarkdownFiles); 
 
 

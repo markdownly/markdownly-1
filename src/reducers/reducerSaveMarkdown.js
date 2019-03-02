@@ -7,7 +7,7 @@ const initialState = {
   }],
   title: 'banana'
 };
-
+//create a handle for grabbing the index, update it, splice the old one out & add the new one
 export default function reducer(state = initialState, action) {
   switch(action.type) {
     case SAVE_MARKDOWN:

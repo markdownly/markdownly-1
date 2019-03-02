@@ -8,23 +8,28 @@ import { updateMarkdown } from '../actions/actionDocument';
 import MarkdownNav from './MarkdownNav';
 import SaveMarkdown from './SaveMarkdown';
 import styles from './Document.css';
+import { getActiveMarkdown, getActiveTitle } from '../selectors/selectMarkdownNav';
 
-const mapStateToProps = (state) => ({
-  markdown: getMarkdown(state)
+const mapStateToProps = (state, props) =>   ({
+  index: props.match.params.index,
+  markdown: getActiveMarkdown(state, props.match.params.index) || getMarkdown(state), 
+  title: getActiveTitle(state, props.match.params.index)
+
 });
 
 const mapDispatchToProps = (dispatch) => ({
   updateMarkdown({ target }) {
+    //pass index to updateMarkdown
     dispatch(updateMarkdown(target.value));
   }
 });
 
-function Document({ markdown, updateMarkdown }) {
+function Document({ markdown, title, index, updateMarkdown }) {
   return (
     <>
-      <SaveMarkdown />
+      <SaveMarkdown title={title} />
       <div className={styles.Document}>
-        <MarkdownNav />
+        <MarkdownNav index={index} />
         <Editor markdown={markdown} updateMarkdown={updateMarkdown} />
         <Preview markdown={markdown} />
       </div>
@@ -33,8 +38,10 @@ function Document({ markdown, updateMarkdown }) {
 }
 
 Document.propTypes = {
-  markdown: PropTypes.string.isRequired,
-  updateMarkdown: PropTypes.func.isRequired
+  markdown: PropTypes.string,
+  index:'',
+  updateMarkdown: PropTypes.func.isRequired,
+  title: PropTypes.string
 };
 
 export default connect(

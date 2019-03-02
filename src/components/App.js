@@ -9,7 +9,7 @@ export default function App() {
       <Router>
         <Switch>
           <Route path="/" component={Document} />
-          <Route path="/markdown/:index" component={document} />
+          <Route path="/markdown/:index" component={Document} />
           <Redirect to="/" />
         </Switch>
       </Router>
